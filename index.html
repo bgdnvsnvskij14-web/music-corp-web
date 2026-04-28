@@ -42,7 +42,6 @@
         .personal-avatar { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin-bottom: 15px; }
         .track-img { width: 55px; height: 55px; border-radius: 10px; margin-right: 15px; object-fit: cover; }
         .back-btn { background: none; border: 1px solid var(--primary); color: white; padding: 10px 20px; border-radius: 30px; cursor: pointer; margin-bottom: 20px; }
-        
         .social-link { justify-content: center; font-size: 16px; }
         .social-link i { margin-right: 12px; font-size: 22px; }
     </style>
@@ -58,14 +57,14 @@
             <div class="menu-btn" onclick="openSection('kohan')"><span>🎵 Музика KohaN</span> <i class="fas fa-chevron-right"></i></div>
             <div class="menu-btn" onclick="openSection('vyshnevsky')"><span>🎤 Музика Vyshnevsky</span> <i class="fas fa-chevron-right"></i></div>
             
-            <a id="btn-boom" href="https://youtu.be/T-Xj1gn43Wc?si=kJiODyuCQT5MPw0G" target="_blank" class="menu-btn">
+            <a id="btn-boom" href="#" target="_blank" class="menu-btn">
                 <span>💥 Останній бум (Відео)</span> <i class="fa-brands fa-youtube" style="color: #ff0000;"></i>
             </a>
-            <a id="btn-clips" href="https://www.youtube.com/watch?v=S_5484gm1BM&list=PLdoT7I-YV5k0gzjDLQBHqnJzX4pMFTnzN" target="_blank" class="menu-btn">
+            <a id="btn-clips" href="#" target="_blank" class="menu-btn">
                 <span>🎬 Кліпи (Плейлист)</span> <i class="fa-solid fa-play" style="color: var(--primary);"></i>
             </a>
 
-            <div class="menu-btn" onclick="openSection('socials')"><span>📱 Наші спільноти</span> <i class="fas fa-users"></i></div>
+            <div class="menu-btn" onclick="openSection('socials-label')"><span>📱 Наші спільноти</span> <i class="fas fa-users"></i></div>
             <div class="menu-btn" onclick="openSection('socials-kohan')"><span>👤 Соцмережі KoHaN</span> <i class="fas fa-chevron-right"></i></div>
             <div class="menu-btn" onclick="openSection('socials-bohdan')"><span>👤 Соцмережі Bohdan Vyshnevskyi</span> <i class="fas fa-chevron-right"></i></div>
             <div class="menu-btn" onclick="openSection('socials-ivan')"><span>👤 Соцмережі Ivan Vyshnevskyi</span> <i class="fas fa-chevron-right"></i></div>
@@ -83,7 +82,7 @@
             <div id="vyshnevsky-list"></div>
         </div>
 
-        <div id="socials" class="section">
+        <div id="socials-label" class="section">
             <button class="back-btn" onclick="goBack()">← Назад</button>
             <h3>Підписуйся на лейбл:</h3>
             <div id="socials-label-list"></div>
@@ -92,7 +91,7 @@
         <div id="socials-kohan" class="section">
             <button class="back-btn" onclick="goBack()">← Назад</button>
             <div class="personal-header">
-                <img src="(kohan).png" class="personal-avatar" onerror="this.src='(kohan).jpg'">
+                <img src="kohan.png" class="personal-avatar" onerror="this.src='(kohan).jpg'">
                 <h3>KoHaN - Соцмережі</h3>
             </div>
             <div id="socials-kohan-list"></div>
@@ -101,7 +100,7 @@
         <div id="socials-bohdan" class="section">
             <button class="back-btn" onclick="goBack()">← Назад</button>
             <div class="personal-header">
-                <img src="bohdan.png" class="personal-avatar" onerror="this.src='bohdan.jpg'">
+                <img src="bohdan.jpg" class="personal-avatar">
                 <h3>Bohdan Vyshnevskyi</h3>
             </div>
             <div id="socials-bohdan-list"></div>
@@ -110,7 +109,7 @@
         <div id="socials-ivan" class="section">
             <button class="back-btn" onclick="goBack()">← Назад</button>
             <div class="personal-header">
-                <img src="ivan.png" class="personal-avatar" onerror="this.src='ivan.jpg'">
+                <img src="ivan.jpg" class="personal-avatar">
                 <h3>Ivan Vyshnevskyi</h3>
             </div>
             <div id="socials-ivan-list"></div>
@@ -123,22 +122,17 @@
                 const response = await fetch('data.json');
                 const data = await response.json();
                 
-                // Оновлюємо списки
                 renderList('kohan-list', data.kohan);
                 renderList('vyshnevsky-list', data.vyshnevsky);
                 
-                // Оновлюємо посилання на окремі кнопки відео (якщо вони вказані)
-                if (data.video_links) {
-                    if (data.video_links.boom) document.getElementById('btn-boom').href = data.video_links.boom;
-                    if (data.video_links.clips) document.getElementById('btn-clips').href = data.video_links.clips;
-                }
+                if (data.boom_video) document.getElementById('btn-boom').href = data.boom_video;
+                if (data.clips_playlist) document.getElementById('btn-clips').href = data.clips_playlist;
 
-                // Оновлюємо соцмережі
                 renderSocials('socials-label-list', data.socials_label);
                 renderSocials('socials-kohan-list', data.socials_kohan);
                 renderSocials('socials-bohdan-list', data.socials_bohdan);
                 renderSocials('socials-ivan-list', data.socials_ivan);
-            } catch (e) { console.error("Помилка завантаження даних", e); }
+            } catch (e) { console.error("Помилка завантаження", e); }
         }
 
         function getIcon(url) {
@@ -157,7 +151,7 @@
                 <a href="${item.link}" target="_blank" class="track-card">
                     <img src="${item.image || ''}" class="track-img" onerror="this.style.display='none'">
                     <div style="text-align:left; flex-grow:1;"><b>${item.title}</b></div>
-                    <i class="fas fa-play" style="color:var(--secondary); font-size: 18px;"></i>
+                    <i class="fas fa-play" style="color:var(--secondary)"></i>
                 </a>
             `).join('');
         }
