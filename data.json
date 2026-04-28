@@ -115,14 +115,19 @@
       "title": "Музика Vyshnevsky",
       "items": [
         {
-          "item_image": "/я вступив в внту 1.png",
-          "item_title": "Я вступив в внту",
-          "item_link": "https://social.tunecore.com/linkShare?linkid=wuq1GOMXaeXyFSReIEAAXQ"
-        },
-        {
           "item_title": "Goodbye my love(phonk remix)",
           "item_link": "https://social.tunecore.com/linkShare?linkid=kaWhXrHieAdSFxbMemyWEA",
           "item_image": "goodbye my love(phonk remix).jpg"
+        },
+        {
+          "item_title": "Успіх",
+          "item_image": "uspih.png",
+          "item_link": "https://social.tunecore.com/linkShare?linkid=jpNc6CmTDhwUvI465nZUYQ"
+        },
+        {
+          "item_image": "/я вступив в внту 1.png",
+          "item_title": "Я вступив в внту",
+          "item_link": "https://social.tunecore.com/linkShare?linkid=wuq1GOMXaeXyFSReIEAAXQ"
         }
       ]
     },
@@ -137,6 +142,32 @@
       "title": "Кліпи(Плейлист) ",
       "item_link": "https://www.youtube.com/playlist?list=PLdoT7I-YV5k0gzjDLQBHqnJzX4pMFTnzN",
       "icon_type": "youtube"
+    },
+    {
+      "type": "social_section",
+      "title": "Наші спільноти",
+      "items": [
+        {
+          "item_title": "Instagram",
+          "item_link": "https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbDZyczh6d25vd1RfaC1memxjbGs0cWNENGNCQXxBQ3Jtc0ttTG5NcEh1WTQzYl8wZjlINllPczE0LVJBT2FZZnFqaHhSN1FYemxHV1BTV0xJQXVwSFczZFA1VVJPSlZDMFNRQnNXZGw4dlBWUXpJY3pGQlpjWGY5am5UajlLcXRNelVoZ0RJa04zeDczRDFtTWxtRQ&q=https%3A%2F%2Finstagram.com%2Fmusic_corp_%3Figshid%3D78u5launxzkv&v=2Cg2-F8rQIg"
+        },
+        {
+          "item_title": "Tiktok",
+          "item_link": "https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbjZtX044NTc0Znh6ZzRnQms2ay10TEVVY0h1d3xBQ3Jtc0tuSDRnbmU0Z0FnRzRGTDBneHFkRTdQWC12Mk0yeWcwQTNJWEhWdTZ4dTJkU1pzV0VxeUs2bm1vRlRQcFZJWlBuODdlaDN0UmRlZmx2TEpKR1ZHVE5MNzFHUVRUb0gyTVJGRlozOS1JV3dsSXkzSTlTYw&q=https%3A%2F%2Fwww.tiktok.com%2F%40musiccorporation%3Flang%3Dru-RU&v=2Cg2-F8rQIg"
+        },
+        {
+          "item_title": "Facebook",
+          "item_link": "https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbHc5TzdOc0ZsUFFlcmhzT2xMUFRtZ0ctXzBJd3xBQ3Jtc0tsT3ExT2NmVHczb0pXOTlWSWs1M0hHei1EaUc5djk4OE9SYTRNM0FoZ0toNWtFUmdTSVJjQVk2MkR5QWxENHVoZ3ZEVjEwdHBFX19wSnlHdVRYbzFsNmVUV3d2V2lsOHVpYWlzSDRrUkhpRnNsc0k0NA&q=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100023364062446&v=2Cg2-F8rQIg"
+        },
+        {
+          "item_title": "Telegram канал",
+          "item_link": "https://t.me/music_corporation28"
+        },
+        {
+          "item_title": "YouTube канал",
+          "item_link": "https://www.youtube.com/@MusicCorporation22"
+        }
+      ]
     }
   ]
 }
