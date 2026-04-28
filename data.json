@@ -191,6 +191,52 @@
           "item_link": "https://www.facebook.com/share/14edpRjdGDo/"
         }
       ]
+    },
+    {
+      "type": "social_section",
+      "title": "Соцмережі Bohdan Vyshnevskyi",
+      "avatar": "bohdan.jpg",
+      "items": [
+        {
+          "item_title": "Instagram",
+          "item_link": "https://www.instagram.com/ogidan_28?igsh=MWg4djJ4OGVyNTh2cA=="
+        },
+        {
+          "item_title": "Tiktok",
+          "item_link": "https://www.tiktok.com/@ogidan28?_r=1&_t=ZS-95vGqV22hHR"
+        },
+        {
+          "item_title": "Telegram",
+          "item_link": "https://t.me/Ogidan28"
+        },
+        {
+          "item_title": "Facebook",
+          "item_link": "https://www.facebook.com/share/1GZG1KisDh/"
+        }
+      ]
+    },
+    {
+      "type": "social_section",
+      "title": "Соцмережі Ivan Vyshnevskyi",
+      "avatar": "ivan.jpg",
+      "items": [
+        {
+          "item_title": "Instagram",
+          "item_link": "https://www.instagram.com/_vanya_2810?igsh=dGM4OTk5MHF2d2Vz"
+        },
+        {
+          "item_title": "Tiktok",
+          "item_link": "https://www.tiktok.com/@vanya.style?_r=1&_t=ZS-95vFcMD19C1"
+        },
+        {
+          "item_title": "Telegram",
+          "item_link": "https://t.me/Izi_money281"
+        },
+        {
+          "item_title": "Facebook",
+          "item_link": "https://www.facebook.com/share/18UuEpWC8T/"
+        }
+      ]
     }
   ]
 }
