@@ -6,63 +6,27 @@ media_folder: "/"
 public_folder: "/"
 
 collections:
-  - name: "database"
-    label: "База даних сайту"
-    files:
-      - label: "Керування контентом"
-        name: "links"
-        file: "data.json"
+  - name: "categories"
+    label: "Усі розділи сайту"
+    folder: "content/categories" # Папка, де будуть лежати твої розділи
+    create: true # Дозволяє додавати НОВІ категорії
+    slug: "{{title}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - {label: "Назва розділу (напр. Музика KohaN)", name: "title", widget: "string"}
+      - {label: "Порядковий номер (1, 2, 3...)", name: "order", widget: "number", default: 10}
+      - label: "Тип розділу"
+        name: "type"
+        widget: "select"
+        options: 
+          - {label: "Список з іконками (Соцмережі)", value: "socials"}
+          - {label: "Список з обкладинками (Музика)", value: "music"}
+          - {label: "Окреме відео", value: "video"}
+      - label: "Вміст розділу"
+        name: "items"
+        widget: "list"
         fields:
-          - label: "🎵 Музика KohaN"
-            name: "kohan"
-            widget: "list"
-            fields:
-              - {label: "Назва треку", name: "title", widget: "string"}
-              - {label: "Посилання", name: "link", widget: "string"}
-              - {label: "Обкладинка", name: "image", widget: "image", required: false}
-
-          - label: "🎤 Музика Vyshnevsky"
-            name: "vyshnevsky"
-            widget: "list"
-            fields:
-              - {label: "Назва треку", name: "title", widget: "string"}
-              - {label: "Посилання", name: "link", widget: "string"}
-              - {label: "Обкладинка", name: "image", widget: "image", required: false}
-
-          - label: "💥 Останній бум (Відео) - Посилання"
-            name: "boom_video"
-            widget: "string"
-            required: false
-
-          - label: "🎬 Кліпи (Плейлист) - Посилання"
-            name: "clips_playlist"
-            widget: "string"
-            required: false
-
-          - label: "📱 Наші спільноти (Лейбл)"
-            name: "socials_label"
-            widget: "list"
-            fields:
-              - {label: "Назва", name: "title", widget: "string"}
-              - {label: "Посилання", name: "link", widget: "string"}
-
-          - label: "👤 Соцмережі KoHaN"
-            name: "socials_kohan"
-            widget: "list"
-            fields:
-              - {label: "Назва", name: "title", widget: "string"}
-              - {label: "Посилання", name: "link", widget: "string"}
-
-          - label: "👤 Соцмережі Bohdan Vyshnevskyi"
-            name: "socials_bohdan"
-            widget: "list"
-            fields:
-              - {label: "Назва", name: "title", widget: "string"}
-              - {label: "Посилання", name: "link", widget: "string"}
-
-          - label: "👤 Соцмережі Ivan Vyshnevskyi"
-            name: "socials_ivan"
-            widget: "list"
-            fields:
-              - {label: "Назва", name: "title", widget: "string"}
-              - {label: "Посилання", name: "link", widget: "string"}
+          - {label: "Назва елемента", name: "item_title", widget: "string"}
+          - {label: "Посилання", name: "item_link", widget: "string"}
+          - {label: "Картинка (для музики)", name: "item_image", widget: "image", required: false}
