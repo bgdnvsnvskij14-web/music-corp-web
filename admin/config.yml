@@ -13,17 +13,47 @@ collections:
         name: "links"
         file: "data.json"
         fields:
-          - label: "Треки KohaN"
+          - label: "🎵 Треки KohaN"
             name: "kohan"
             widget: "list"
             fields:
               - {label: "Назва", name: "title", widget: "string"}
               - {label: "Посилання", name: "link", widget: "string"}
               - {label: "Обкладинка", name: "image", widget: "image", required: false}
-          - label: "Треки Vyshnevsky"
+          - label: "🎤 Треки Vyshnevsky"
             name: "vyshnevsky"
             widget: "list"
             fields:
               - {label: "Назва", name: "title", widget: "string"}
               - {label: "Посилання", name: "link", widget: "string"}
               - {label: "Обкладинка", name: "image", widget: "image", required: false}
+          - label: "▶️ Головні відео (Останній бум, Кліпи)"
+            name: "main_videos"
+            widget: "list"
+            fields:
+              - {label: "Назва кнопки", name: "title", widget: "string"}
+              - {label: "Посилання (YouTube тощо)", name: "link", widget: "string"}
+          - label: "📱 Наші спільноти (Лейбл)"
+            name: "socials_label"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
+          - label: "👤 Соцмережі KoHaN"
+            name: "socials_kohan"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
+          - label: "👤 Соцмережі Bohdan Vyshnevskyi"
+            name: "socials_bohdan"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
+          - label: "👤 Соцмережі Ivan Vyshnevskyi"
+            name: "socials_ivan"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
