@@ -3,33 +3,92 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Адміністратор Music Corp</title>
+    <title>Панель керування | Music Corporation</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     
     <style>
-        /* Стилізуємо фон під головний сайт */
+        /* Головний фон з розмиттям, щоб не заважав тексту */
         body {
             background: url('../Шапка канала 7.png') no-repeat center center fixed !important;
             background-size: cover !important;
-        }
-        
-        /* Робимо загальний фон панелі темним і напівпрозорим */
-        #nc-root > div {
-            background-color: rgba(0, 0, 0, 0.85) !important;
-            color: #ffffff !important;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Стилізуємо верхню шапку адмінки */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10, 15, 20, 0.85); /* Темний фільтр */
+            backdrop-filter: blur(20px); /* Сильне розмиття фону */
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 0;
+        }
+
+        /* Контейнер CMS поверх фону */
+        #nc-root {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Верхня панель (Header) */
         header {
-            background-color: rgba(0, 0, 0, 0.9) !important;
-            border-bottom: 2px solid #00f2ea !important;
-            box-shadow: 0 4px 15px rgba(0, 242, 234, 0.2) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(10px) !important;
+            border-bottom: 1px solid rgba(0, 242, 234, 0.3) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
         }
 
-        /* Робимо бокове меню темнішим */
+        /* Картки та списки */
+        .nc-app-container {
+            background: transparent !important;
+        }
+
+        /* Стилізація панелей колекцій (Collections) */
         aside {
-            background-color: rgba(20, 20, 20, 0.9) !important;
-            border-right: 1px solid #ff0050 !important;
+            background: rgba(0, 0, 0, 0.4) !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Поля вводу та кнопки */
+        input, select, textarea {
+            background: rgba(255, 255, 255, 0.05) !important;
+            color: white !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Основна робоча область */
+        main {
+            background: rgba(20, 25, 30, 0.6) !important;
+            border-radius: 15px !important;
+            margin: 20px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Текст */
+        h1, h2, h3, p, label, span {
+            color: #ffffff !important;
+            font-family: 'Montserrat', sans-serif !important;
+        }
+
+        /* Акценти (Неоновий блакитний як на сайті) */
+        .nc-collectionPage-sidebarLink-active, 
+        button, 
+        [class*="StyledIcon"] {
+            color: #00f2ea !important;
+        }
+
+        button {
+            background: rgba(0, 242, 234, 0.1) !important;
+            border: 1px solid #00f2ea !important;
+            transition: 0.3s !important;
+        }
+
+        button:hover {
+            background: #00f2ea !important;
+            color: #000 !important;
         }
     </style>
   </head>
