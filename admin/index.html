@@ -3,8 +3,35 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Адмін-панель Music Corp</title>
+    <title>Адміністратор Music Corp</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <style>
+        /* Стилізуємо фон під головний сайт */
+        body {
+            background: url('../Шапка канала 7.png') no-repeat center center fixed !important;
+            background-size: cover !important;
+        }
+        
+        /* Робимо загальний фон панелі темним і напівпрозорим */
+        #nc-root > div {
+            background-color: rgba(0, 0, 0, 0.85) !important;
+            color: #ffffff !important;
+        }
+
+        /* Стилізуємо верхню шапку адмінки */
+        header {
+            background-color: rgba(0, 0, 0, 0.9) !important;
+            border-bottom: 2px solid #00f2ea !important;
+            box-shadow: 0 4px 15px rgba(0, 242, 234, 0.2) !important;
+        }
+
+        /* Робимо бокове меню темнішим */
+        aside {
+            background-color: rgba(20, 20, 20, 0.9) !important;
+            border-right: 1px solid #ff0050 !important;
+        }
+    </style>
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
