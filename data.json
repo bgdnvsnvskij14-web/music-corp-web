@@ -39,7 +39,7 @@
     },
     {
       "type": "video_button",
-      "title": "Кліпи(Плейлист)",
+      "title": "Кліпи(Плейлист) ",
       "item_link": "https://www.youtube.com/playlist?list=PLdoT7I-YV5k0gzjDLQBHqnJzX4pMFTnzN",
       "icon_type": "youtube"
     }
