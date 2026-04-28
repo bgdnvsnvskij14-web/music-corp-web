@@ -3,100 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Corporation | Admin Panel</title>
+    <title>Music Corporation</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --primary: #00f2ea; --secondary: #ff0050; --glass-bg: rgba(255, 255, 255, 0.08); --text-color: #ffffff; }
         body { margin: 0; font-family: 'Montserrat', sans-serif; background: url('Шапка канала 7.png') no-repeat center center fixed; background-size: cover; color: var(--text-color); min-height: 100vh; }
-        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(15px); z-index: -1; }
-        .container { width: 90%; max-width: 450px; margin: 30px auto; text-align: center; background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.15); padding: 25px; border-radius: 24px; }
-        .logo { width: 100%; max-width: 280px; border-radius: 12px; border: 2px solid var(--primary); margin-bottom: 20px; }
-        .menu-btn, .item-card { display: flex; align-items: center; justify-content: space-between; background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.1); color: white; text-decoration: none; padding: 16px 20px; margin: 12px 0; border-radius: 16px; cursor: pointer; transition: 0.3s; }
-        .menu-btn:hover { border-color: var(--primary); transform: translateY(-2px); }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(15px); z-index: -1; }
+        .container { width: 90%; max-width: 450px; margin: 30px auto; text-align: center; background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.15); padding: 25px; border-radius: 24px; backdrop-filter: blur(5px); }
+        .logo { width: 100%; max-width: 300px; border-radius: 12px; border: 2px solid var(--primary); margin-bottom: 30px; }
+        .menu-btn, .item-card { display: flex; align-items: center; justify-content: space-between; background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.1); color: white; text-decoration: none; padding: 18px 20px; margin: 12px 0; border-radius: 16px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .menu-btn:hover { border-color: var(--primary); transform: translateY(-3px); }
         .section { display: none; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .back-btn { background: none; border: 1px solid var(--primary); color: white; padding: 8px 18px; border-radius: 20px; cursor: pointer; margin-bottom: 15px; }
-        .item-img { width: 50px; height: 50px; border-radius: 8px; margin-right: 15px; object-fit: cover; }
-        i { font-size: 18px; }
+        .back-btn { background: none; border: 1px solid var(--primary); color: white; padding: 10px 20px; border-radius: 30px; cursor: pointer; margin-bottom: 20px; }
+        .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin-bottom: 15px; }
+        .item-img { width: 55px; height: 55px; border-radius: 10px; margin-right: 15px; object-fit: cover; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="home">
+        <div id="main-view">
             <img src="Шапка канала 7.png" class="logo">
-            <h1 style="font-size: 22px; text-transform: uppercase;">Music Corporation</h1>
-            <div id="categories-menu"></div>
+            <h1 style="font-weight: 800; text-transform: uppercase; font-size: 22px;">Music Corporation</h1>
+            <div id="dynamic-menu"></div>
         </div>
-        <div id="details" class="section">
-            <button class="back-btn" onclick="showHome()">← Назад</button>
-            <h2 id="section-title"></h2>
-            <div id="items-list"></div>
+
+        <div id="section-view" class="section">
+            <button class="back-btn" onclick="showMain()">← Назад</button>
+            <div id="section-header"></div>
+            <div id="section-items"></div>
         </div>
     </div>
 
     <script>
-        let allData = [];
+        let sections = [];
 
-        async function fetchContent() {
+        async function loadContent() {
             try {
-                // Netlify/GitHub API для отримання списку файлів у папці
-                const repo = "bgdnvsnvkij14-web/music-corp-web"; // ПЕРЕВІР НАЗВУ СВОГО РЕПО
-                const response = await fetch(`https://api.github.com/repos/${repo}/contents/content/categories`);
-                const files = await response.json();
-                
-                const dataPromises = files.map(file => fetch(file.download_url).then(res => res.json()));
-                allData = await Promise.all(dataPromises);
-                
-                // Сортування категорій за параметром "order"
-                allData.sort((a, b) => a.order - b.order);
+                const response = await fetch('data.json');
+                const data = await response.json();
+                sections = data.sections || [];
                 renderMenu();
-            } catch (e) { console.error("Помилка:", e); }
+            } catch (e) { console.error("Помилка завантаження", e); }
         }
 
         function renderMenu() {
-            const menu = document.getElementById('categories-menu');
-            menu.innerHTML = allData.map((cat, index) => {
-                if(cat.type === 'video') {
-                    return `<a href="${cat.items[0]?.item_link}" target="_blank" class="menu-btn">
-                        <span>${cat.title}</span> <i class="fab fa-youtube" style="color:red"></i>
+            const menu = document.getElementById('dynamic-menu');
+            menu.innerHTML = sections.map((sec, i) => {
+                if (sec.type === 'video_button') {
+                    return `<a href="${sec.item_link}" target="_blank" class="menu-btn">
+                        <span>${sec.title}</span> ${getIconByTag(sec.icon_type)}
                     </a>`;
                 }
-                return `<div class="menu-btn" onclick="showSection(${index})">
-                    <span>${cat.title}</span> <i class="fas fa-chevron-right"></i>
+                return `<div class="menu-btn" onclick="openSection(${i})">
+                    <span>${sec.title}</span> <i class="fas fa-chevron-right"></i>
                 </div>`;
             }).join('');
         }
 
-        function showSection(index) {
-            const cat = allData[index];
-            document.getElementById('home').style.display = 'none';
-            document.getElementById('details').style.display = 'block';
-            document.getElementById('section-title').innerText = cat.title;
+        function openSection(index) {
+            const sec = sections[index];
+            document.getElementById('main-view').style.display = 'none';
+            document.getElementById('section-view').style.display = 'block';
             
-            const list = document.getElementById('items-list');
-            list.innerHTML = cat.items.map(item => `
+            const header = document.getElementById('section-header');
+            header.innerHTML = sec.avatar ? `<img src="${sec.avatar}" class="avatar">` : '';
+            header.innerHTML += `<h3>${sec.title}</h3>`;
+
+            const list = document.getElementById('section-items');
+            list.innerHTML = (sec.items || []).map(item => `
                 <a href="${item.item_link}" target="_blank" class="item-card">
-                    ${cat.type === 'music' ? `<img src="${item.item_image}" class="item-img" onerror="this.style.display='none'">` : getIcon(item.item_link)}
+                    ${sec.type === 'music_section' ? `<img src="${item.item_image}" class="item-img" onerror="this.style.display='none'">` : getIconByUrl(item.item_link)}
                     <div style="flex-grow:1; text-align:left;"><b>${item.item_title}</b></div>
                     <i class="fas fa-play" style="color:var(--secondary)"></i>
                 </a>
             `).join('');
         }
 
-        function getIcon(url) {
+        function getIconByTag(tag) {
+            if(tag === 'youtube') return '<i class="fab fa-youtube" style="color:red"></i>';
+            if(tag === 'users') return '<i class="fas fa-users"></i>';
+            return '<i class="fas fa-play" style="color:var(--primary)"></i>';
+        }
+
+        function getIconByUrl(url) {
             if(url.includes('tiktok')) return '<i class="fab fa-tiktok" style="margin-right:15px"></i>';
-            if(url.includes('instagram')) return '<i class="fab fa-instagram" style="margin-right:15px"></i>';
+            if(url.includes('instagram')) return '<i class="fab fa-instagram" style="margin-right:15px; color:#e1306c"></i>';
             return '<i class="fas fa-link" style="margin-right:15px"></i>';
         }
 
-        function showHome() {
-            document.getElementById('details').style.display = 'none';
-            document.getElementById('home').style.display = 'block';
+        function showMain() {
+            document.getElementById('section-view').style.display = 'none';
+            document.getElementById('main-view').style.display = 'block';
         }
 
-        fetchContent();
+        loadContent();
     </script>
 </body>
 </html>
