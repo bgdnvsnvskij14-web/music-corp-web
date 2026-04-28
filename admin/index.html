@@ -7,88 +7,86 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     
     <style>
-        /* Головний фон з розмиттям, щоб не заважав тексту */
+        /* Базові налаштування фону */
         body {
-            background: url('../Шапка канала 7.png') no-repeat center center fixed !important;
-            background-size: cover !important;
+            background: #0f141a !important; /* Глибокий темний колір для стабільності */
             margin: 0;
             padding: 0;
+            font-family: 'Montserrat', sans-serif !important;
         }
 
+        /* Декоративний фон, який не заважає контенту */
         body::before {
             content: '';
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(10, 15, 20, 0.85); /* Темний фільтр */
-            backdrop-filter: blur(20px); /* Сильне розмиття фону */
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 0;
+            background: url('../Шапка канала 7.png') no-repeat center top !important;
+            background-size: cover !important;
+            opacity: 0.2; /* Робимо фон ледь помітним фокусом */
+            z-index: -1;
         }
 
-        /* Контейнер CMS поверх фону */
+        /* Стилізація головної панелі CMS */
         #nc-root {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Верхня панель (Header) */
-        header {
-            background: rgba(255, 255, 255, 0.05) !important;
-            backdrop-filter: blur(10px) !important;
-            border-bottom: 1px solid rgba(0, 242, 234, 0.3) !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
-        }
-
-        /* Картки та списки */
-        .nc-app-container {
             background: transparent !important;
         }
 
-        /* Стилізація панелей колекцій (Collections) */
+        /* Верхня навігація */
+        header {
+            background: rgba(15, 20, 26, 0.95) !important;
+            border-bottom: 2px solid #00f2ea !important; /* Твій фірмовий блакитний */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* Сайдбар (бічна панель) */
         aside {
-            background: rgba(0, 0, 0, 0.4) !important;
-            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+            background: rgba(20, 26, 33, 0.9) !important;
+            border-right: 1px solid rgba(0, 242, 234, 0.1) !important;
         }
 
-        /* Поля вводу та кнопки */
-        input, select, textarea {
-            background: rgba(255, 255, 255, 0.05) !important;
-            color: white !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            border-radius: 8px !important;
-        }
-
-        /* Основна робоча область */
+        /* Основна робоча область - робимо її чіткою та зручною */
         main {
-            background: rgba(20, 25, 30, 0.6) !important;
-            border-radius: 15px !important;
+            background: #1a2129 !important; /* Суцільний колір для тексту */
+            border-radius: 12px !important;
             margin: 20px !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding: 10px !important;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
         }
 
-        /* Текст */
-        h1, h2, h3, p, label, span {
-            color: #ffffff !important;
-            font-family: 'Montserrat', sans-serif !important;
-        }
-
-        /* Акценти (Неоновий блакитний як на сайті) */
-        .nc-collectionPage-sidebarLink-active, 
-        button, 
-        [class*="StyledIcon"] {
-            color: #00f2ea !important;
-        }
-
+        /* Кнопки */
         button {
-            background: rgba(0, 242, 234, 0.1) !important;
-            border: 1px solid #00f2ea !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
             transition: 0.3s !important;
         }
 
-        button:hover {
-            background: #00f2ea !important;
-            color: #000 !important;
+        /* Блакитні акценти (кнопки збереження, посилання) */
+        .nc-app-container button[class*="StyledButton"], 
+        .nc-collectionPage-sidebarLink-active {
+            background-color: #00f2ea !important;
+            color: #000000 !important;
+        }
+
+        /* Рожеві акценти для другорядних елементів */
+        button[class*="StyledIcon"] {
+            color: #ff0050 !important;
+        }
+
+        /* Поля вводу */
+        input, select, textarea {
+            background: #252d37 !important;
+            color: white !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 6px !important;
+        }
+
+        input:focus {
+            border-color: #00f2ea !important;
+        }
+
+        /* Колір тексту */
+        span, h1, h2, h3, label {
+            color: #ffffff !important;
         }
     </style>
   </head>
