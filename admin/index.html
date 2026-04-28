@@ -1,12 +1,68 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Адмін-панель Music Corp</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  </body>
-</html>
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "/"
+public_folder: "/"
+
+collections:
+  - name: "database"
+    label: "База даних сайту"
+    files:
+      - label: "Усі розділи сайту"
+        name: "links"
+        file: "data.json"
+        fields:
+          - label: "🎵 Музика KohaN"
+            name: "kohan"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
+              - {label: "Обкладинка", name: "image", widget: "image", required: false}
+
+          - label: "🎤 Музика Vyshnevsky"
+            name: "vyshnevsky"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
+              - {label: "Обкладинка", name: "image", widget: "image", required: false}
+
+          - label: "💥 Останній бум (Відео)"
+            name: "boom_video"
+            widget: "string"
+            required: false
+
+          - label: "🎬 Кліпи (Плейлист)"
+            name: "clips_playlist"
+            widget: "string"
+            required: false
+
+          - label: "📱 Наші спільноти (Лейбл)"
+            name: "socials_label"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
+
+          - label: "👤 Соцмережі KoHaN"
+            name: "socials_kohan"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
+
+          - label: "👤 Соцмережі Bohdan Vyshnevskyi"
+            name: "socials_bohdan"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
+
+          - label: "👤 Соцмережі Ivan Vyshnevskyi"
+            name: "socials_ivan"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
