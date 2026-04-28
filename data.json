@@ -168,6 +168,29 @@
           "item_link": "https://www.youtube.com/@MusicCorporation22"
         }
       ]
+    },
+    {
+      "type": "social_section",
+      "title": "Соцмережі KoHaN",
+      "avatar": "(kohan).jpg",
+      "items": [
+        {
+          "item_title": "Instagram",
+          "item_link": "https://www.instagram.com/03.kohan.03?igsh=Mzk1ZmZqMnNsemp6"
+        },
+        {
+          "item_title": "Tiktok",
+          "item_link": "https://www.tiktok.com/@kohan859?_r=1&_t=ZS-95vFdb608CC"
+        },
+        {
+          "item_title": "Telegram канал",
+          "item_link": "https://t.me/KoHaN0303"
+        },
+        {
+          "item_title": "Facebook",
+          "item_link": "https://www.facebook.com/share/14edpRjdGDo/"
+        }
+      ]
     }
   ]
 }
