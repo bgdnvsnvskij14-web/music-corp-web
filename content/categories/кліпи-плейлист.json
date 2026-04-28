@@ -1,0 +1,11 @@
+{
+  "order": 2,
+  "title": "Кліпи(Плейлист)",
+  "type": "video",
+  "items": [
+    {
+      "item_link": "https://www.youtube.com/playlist?list=PLdoT7I-YV5k0gzjDLQBHqnJzX4pMFTnzN",
+      "item_title": "."
+    }
+  ]
+}
