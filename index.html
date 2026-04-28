@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Corporation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta property="og:title" content="Music Corporation">
+    <meta property="og:description" content="Слухай нові треки KohaN та Vyshnevsky тут">
+    <meta property="og:image" content="Шапка канала 7.png">
+
+    <style>
+        :root {
+            --primary: #00f2ea; /* Блакитний */
+            --secondary: #ff0050; /* Рожевий */
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: url('Шапка канала 7.png') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(15px);
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 450px;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Логотип (Головний) */
+        .logo-container { margin-bottom: 30px; }
+        .logo {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 25px rgba(0, 242, 234, 0.4);
+            transition: transform 0.3s ease;
+        }
+        .logo:hover { transform: scale(1.02); }
+
+        h1 {
+            margin: 15px 0; font-weight: 800; letter-spacing: 1.5px;
+            text-transform: uppercase; font-size: 24px;
+            text-shadow: 0 0 10px rgba(0, 242, 234, 0.5);
+        }
+
+        /* Аватарки для особистих сторінок */
+        .personal-header {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .personal-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 25px rgba(0, 242, 234, 0.5);
+            margin-bottom: 15px;
+            animation: fadeInAvatar 0.5s ease;
+            background-color: #000;
+        }
+        @keyframes fadeInAvatar {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Меню кнопок */
+        .menu-btn {
+            display: block;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 18px 20px;
+            margin: 12px 0;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 242, 234, 0.2);
+        }
+        
+        .menu-btn i { font-size: 20px; color: var(--primary); }
+
+        /* Секції */
+        .section { display: none; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.1); border: 1px solid var(--primary); color: white;
+            padding: 10px 24px; border-radius: 30px; cursor: pointer;
+            margin-bottom: 25px; font-size: 14px; font-weight: 600;
+            transition: all 0.3s ease; display: inline-flex; align-items: center;
+        }
+        .back-btn i { margin-right: 8px; }
+        .back-btn:hover { background: var(--primary); color: black; box-shadow: 0 0 15px rgba(0, 242, 234, 0.5); }
+
+        h3 {
+            font-size: 20px; font-weight: 700; margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Трек */
+        .track-card {
+            background: var(--glass-bg); border-radius: 16px; padding: 12px;
+            margin-bottom: 12px; display: flex; align-items: center;
+            text-decoration: none; color: var(--text-color); transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .track-card:hover {
+            border-color: var(--secondary); background: rgba(255, 255, 255, 0.12);
+            transform: translateX(5px); box-shadow: 0 4px 15px rgba(255, 0, 80, 0.2);
+        }
+
+        .track-img {
+            width: 55px; height: 55px; border-radius: 10px; margin-right: 15px;
+            background: #333; object-fit: cover; border: 1px solid var(--glass-border);
+        }
+
+        .track-info { text-align: left; flex-grow: 1; }
+        .track-title { font-weight: 600; font-size: 15px; display: block; margin-bottom: 4px; }
+        .track-icon { color: var(--secondary); font-size: 18px; opacity: 0.8; transition: 0.3s; }
+        .track-card:hover .track-icon { opacity: 1; transform: scale(1.1); }
+
+        /* Соцмережі */
+        .social-link { justify-content: center; font-size: 18px; }
+        .social-link i { margin-right: 12px; font-size: 24px; }
+        
+        .tiktok:hover { border-color: #00f2ea; box-shadow: 0 8px 25px rgba(0, 242, 234, 0.2); }
+        .tiktok i { color: #00f2ea; }
+        
+        .insta:hover { border-color: #c13584; box-shadow: 0 8px 25px rgba(193, 53, 132, 0.2); }
+        .insta i { color: #c13584; }
+        
+        .yt:hover { border-color: #ff0000; box-shadow: 0 8px 25px rgba(255, 0, 0, 0.2); }
+        .yt i { color: #ff0000; }
+        
+        .tg:hover { border-color: #0088cc; box-shadow: 0 8px 25px rgba(0, 136, 204, 0.2); }
+        .tg i { color: #0088cc; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div id="global-header" class="logo-container">
+            <img src="Шапка канала 7.png" alt="Music Corporation" class="logo">
+            <h1>Music Corporation</h1>
+        </div>
+
+        <div id="main-menu">
+            <div class="menu-btn" onclick="openSection('kohan')">
+                <span>🎵 Музика KohaN</span> <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <div class="menu-btn" onclick="openSection('vyshnevsky')">
+                <span>🎤 Музика Vyshnevsky</span> <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <a href="https://youtu.be/T-Xj1gn43Wc?si=kJiODyuCQT5MPw0G" target="_blank" class="menu-btn">
+                <span>💥 Останній бум (Відео)</span> <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="https://www.youtube.com/watch?v=S_5484gm1BM&list=PLdoT7I-YV5k0gzjDLQBHqnJzX4pMFTnzN" target="_blank" class="menu-btn">
+                <span>🎬 Кліпи (Плейлист)</span> <i class="fa-solid fa-play"></i>
+            </a>
+            <div class="menu-btn" onclick="openSection('socials')">
+                <span>📱 Наші спільноти</span> <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="menu-btn" onclick="openSection('socials-kohan')">
+                <span>👤 Соцмережі KoHaN</span> <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <div class="menu-btn" onclick="openSection('socials-bohdan')">
+                <span>👤 Соцмережі Bohdan Vyshnevskyi</span> <i class="fa-solid fa-chevron-right"></i>
+            </div>
+             <div class="menu-btn" onclick="openSection('socials-ivan')">
+                <span>👤 Соцмережі Ivan Vyshnevskyi</span> <i class="fa-solid fa-chevron-right"></i>
+            </div>
+        </div>
+
+        <div id="kohan" class="section">
+            <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h3>KohaN - Треки</h3>
+
+            <a href="https://social.tunecore.com/linkShare?linkid=7-YQ2pb5FbOGPjWtrhfl9Q" target="_blank" class="track-card">
+                <img src="Далі буде(обложка).png" class="track-img">
+                <div class="track-info"><span class="track-title">Далі Буде</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+            <a href="https://social.tunecore.com/linkShare?linkid=RmkXISwMusSnr8hVrHQg_w" target="_blank" class="track-card">
+                <img src="вже не моя спальня(обложка).png" class="track-img">
+                <div class="track-info"><span class="track-title">Вже не моя спальня</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+            <a href="https://social.tunecore.com/linkShare?linkid=sCUa1-mpeAcfyjK83jHzcQ" target="_blank" class="track-card">
+                <img src="Це не проблема(обложка).png" class="track-img">
+                <div class="track-info"><span class="track-title">Це не проблема</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+            <a href="https://social.tunecore.com/linkShare?linkid=1_FmLkFXkicyWD25iOinGA" target="_blank" class="track-card">
+                <img src="Морфій(обложка).png" class="track-img">
+                <div class="track-info"><span class="track-title">Морфій</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+            <a href="https://social.tunecore.com/linkShare?linkid=LxDmBQMJ6nTwuzHy3-dbzg" target="_blank" class="track-card">
+                <img src="Лютий (обложка).png" class="track-img">
+                <div class="track-info"><span class="track-title">Лютий</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+            <a href="https://social.tunecore.com/linkShare?linkid=ccyynvT5wzNe6YxbmHSDig" target="_blank" class="track-card">
+                <img src="Життя(Обложка).png" class="track-img">
+                <div class="track-info"><span class="track-title">Життя</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+            <a href="https://social.tunecore.com/linkShare?linkid=PEDBDTkxz8oVMiPARvuI8A" target="_blank" class="track-card">
+                <img src="Hey Yah(обложка).png" class="track-img">
+                <div class="track-info"><span class="track-title">Hey Yah</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=OHxcaVO4Ce0mgxO3JmMDqA" target="_blank" class="track-card">
+                <img src="Monst Era.png" class="track-img">
+                <div class="track-info"><span class="track-title">Monst Era</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=qo-vU4KcOSI17VZ-hD6gPw" target="_blank" class="track-card">
+                <img src="сон(обложка).png" class="track-img">
+                <div class="track-info"><span class="track-title">Сон</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=xkBoXuOBoDD97_7DJnTAbQ" target="_blank" class="track-card">
+                <img src="можеш заснути.png" class="track-img">
+                <div class="track-info"><span class="track-title">Можеш заснути</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=Y4RSSZjyl8lg4NhRPHJWSA" target="_blank" class="track-card">
+                <img src="Приступати до дій.png" class="track-img">
+                <div class="track-info"><span class="track-title">Приступати до дій</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=h4yWay99L375U7-CQEbuGg" target="_blank" class="track-card">
+                <img src="kohan.png" class="track-img">
+                <div class="track-info"><span class="track-title">Kohan</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=kaWhXrHieAdSFxbMemyWEA" target="_blank" class="track-card">
+                <img src="goodbye my love.png" class="track-img">
+                <div class="track-info"><span class="track-title">Goodbye my love</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=o_QnXZ6YMe7iCS5ws_yT6Q" target="_blank" class="track-card">
+                <img src="точно не соло.png" class="track-img">
+                <div class="track-info"><span class="track-title">Точно не соло</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=I28439ZhVrvrjZacENYEsw" target="_blank" class="track-card">
+                <img src="goodbye my love(phonk remix).jpg" class="track-img">
+                <div class="track-info"><span class="track-title">Goodbye my love (Phonk Remix)</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=jAUEa7FoE1HMyK4DXxSuqw" target="_blank" class="track-card">
+                <img src="SPIT IN MY FACE обложка 2.png" class="track-img">
+                <div class="track-info"><span class="track-title">Split in my face</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=B-PC1AsnelD_4bZVZnL3QA" target="_blank" class="track-card">
+                <img src="Тік Так.png" class="track-img">
+                <div class="track-info"><span class="track-title">Тік Так</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+             <a href="https://social.tunecore.com/linkShare?linkid=QgN-qfuQIHti8zvat9Is2Q" target="_blank" class="track-card">
+                <img src="прощай.png" class="track-img">
+                <div class="track-info"><span class="track-title">Прощай</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+            
+            <a href="https://social.tunecore.com/linkShare?linkid=ipIwAantTNnnt3OQMtC-yw" target="_blank" class="track-card">
+                <img src="Я тобі брешу.png" class="track-img" onerror="tryFixImage(this, 'Я тобі брешу')">
+                <div class="track-info"><span class="track-title">Я тобі брешу</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+        </div>
+
+        <div id="vyshnevsky" class="section">
+            <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h3>Vyshnevsky - Треки</h3>
+            <a href="https://social.tunecore.com/linkShare?linkid=wuq1GOMXaeXyFSReIEAAXQ" target="_blank" class="track-card">
+                <img src="Я вступив в ВНТУ 1.png" class="track-img">
+                <div class="track-info"><span class="track-title">Я вступив в внту</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+            <a href="https://social.tunecore.com/linkShare?linkid=jpNc6CmTDhwUvI465nZUYQ" target="_blank" class="track-card">
+                <img src="uspih.png" class="track-img">
+                <div class="track-info"><span class="track-title">Успіх</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+            <a href="https://social.tunecore.com/linkShare?linkid=kaWhXrHieAdSFxbMemyWEA" target="_blank" class="track-card">
+                <img src="goodbye my love(phonk remix).jpg" class="track-img">
+                <div class="track-info"><span class="track-title">Goodbye My Love (Phonk Remix)</span></div>
+                <i class="fa-solid fa-play track-icon"></i>
+            </a>
+        </div>
+
+        <div id="socials-kohan" class="section">
+            <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <div class="personal-header">
+                <img src="%28kohan%29.png" class="personal-avatar" onerror="tryFixImage(this, '(kohan)')" alt="KoHaN">
+                <h3>KoHaN - Соцмережі</h3>
+            </div>
+            <a href="https://www.tiktok.com/@kohan859?_r=1&_t=ZS-93j7RN0xmaL" target="_blank" class="menu-btn social-link tiktok">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+            
+            <a href="https://www.instagram.com/03.kohan.03?igsh=Mzk1ZmZqMnNsemp6" target="_blank" class="menu-btn social-link insta">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            
+            <a href="https://t.me/KoHaN0303" target="_blank" class="menu-btn social-link tg">
+                <i class="fa-brands fa-telegram"></i> Telegram Канал
+            </a>
+            <a href="https://t.me/X_sasha07" target="_blank" class="menu-btn social-link tg">
+                <i class="fa-regular fa-paper-plane"></i> Telegram (Особистий)
+            </a>
+        </div>
+
+        <div id="socials-bohdan" class="section">
+            <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <div class="personal-header">
+                <img src="bohdan.png" class="personal-avatar" onerror="tryFixImage(this, 'bohdan')" alt="Bohdan">
+                <h3>Bohdan Vyshnevskyi</h3>
+            </div>
+            <a href="https://www.tiktok.com/@ogidan28?_r=1&_t=ZS-93j7KDBRYea" target="_blank" class="menu-btn social-link tiktok">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://www.instagram.com/ogidan_28?igsh=MWg4djJ4OGVyNTh2cA==" target="_blank" class="menu-btn social-link insta">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://t.me/ogidan28" target="_blank" class="menu-btn social-link tg">
+                <i class="fa-brands fa-telegram"></i> Telegram
+            </a>
+        </div>
+
+        <div id="socials-ivan" class="section">
+            <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <div class="personal-header">
+                <img src="ivan.png" class="personal-avatar" onerror="tryFixImage(this, 'ivan')" alt="Ivan">
+                <h3>Ivan Vyshnevskyi</h3>
+            </div>
+            <a href="https://www.tiktok.com/@vanya.style?_r=1&_t=ZS-93j7NSlSf2b" target="_blank" class="menu-btn social-link tiktok">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://www.instagram.com/_vanya_2810?igsh=dGM4OTk5MHF2d2Vz" target="_blank" class="menu-btn social-link insta">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://t.me/Izi_money281" target="_blank" class="menu-btn social-link tg">
+                <i class="fa-brands fa-telegram"></i> Telegram
+            </a>
+        </div>
+
+        <div id="socials" class="section">
+            <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h3>Підписуйся на лейбл:</h3>
+            <a href="https://www.tiktok.com/@musiccorporation?_r=1&_t=ZS-93j3rdvx7xN" target="_blank" class="menu-btn social-link tiktok">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://www.instagram.com/music_corp_?utm_source=qr&igsh=dXppaGVqdGk5Zmpo" target="_blank" class="menu-btn social-link insta">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.youtube.com/@MusicCorporation22" target="_blank" class="menu-btn social-link yt">
+                <i class="fa-brands fa-youtube"></i> YouTube Канал
+            </a>
+            <a href="https://t.me/music_corporation28" target="_blank" class="menu-btn social-link tg">
+                <i class="fa-brands fa-telegram"></i> Telegram
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function openSection(id) {
+            document.getElementById('main-menu').style.display = 'none';
+            document.getElementById('global-header').style.display = 'none';
+            document.querySelectorAll('.section').forEach(el => el.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function goBack() {
+            document.querySelectorAll('.section').forEach(el => el.style.display = 'none');
+            document.getElementById('main-menu').style.display = 'block';
+            document.getElementById('global-header').style.display = 'block';
+        }
+
+        function tryFixImage(img, baseName) {
+            if (!img.dataset.tried) {
+                img.dataset.tried = "1";
+                img.src = baseName + ".png.png"; 
+            } else if (img.dataset.tried === "1") {
+                img.dataset.tried = "2";
+                img.src = baseName + ".jpg";
+            } else {
+                console.log("Не вдалося завантажити фото: " + baseName);
+            }
+        }
+    </script>
+</body>
+</html>
