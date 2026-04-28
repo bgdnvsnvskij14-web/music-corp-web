@@ -19,6 +19,17 @@
         }
       ],
       "title": "Музика KoHaN"
+    },
+    {
+      "type": "music_section",
+      "title": "Музика Vyshnevsky",
+      "items": [
+        {
+          "item_image": "/я вступив в внту 1.png",
+          "item_title": "Я вступив в внту",
+          "item_link": "https://social.tunecore.com/linkShare?linkid=wuq1GOMXaeXyFSReIEAAXQ"
+        }
+      ]
     }
   ]
 }
