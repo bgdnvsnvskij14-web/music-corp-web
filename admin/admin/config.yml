@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "/"
+public_folder: "/"
+
+collections:
+  - name: "database"
+    label: "База даних сайту"
+    files:
+      - label: "Усі треки та посилання"
+        name: "links"
+        file: "data.json"
+        fields:
+          - label: "Треки KohaN"
+            name: "kohan"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
+              - {label: "Обкладинка", name: "image", widget: "image", required: false}
+          - label: "Треки Vyshnevsky"
+            name: "vyshnevsky"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "title", widget: "string"}
+              - {label: "Посилання", name: "link", widget: "string"}
+              - {label: "Обкладинка", name: "image", widget: "image", required: false}
