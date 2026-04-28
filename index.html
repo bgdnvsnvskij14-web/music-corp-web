@@ -58,7 +58,12 @@
             <div class="menu-btn" onclick="openSection('kohan')"><span>🎵 Музика KohaN</span> <i class="fas fa-chevron-right"></i></div>
             <div class="menu-btn" onclick="openSection('vyshnevsky')"><span>🎤 Музика Vyshnevsky</span> <i class="fas fa-chevron-right"></i></div>
             
-            <div id="dynamic-videos"></div>
+            <a id="btn-boom" href="https://youtu.be/T-Xj1gn43Wc?si=kJiODyuCQT5MPw0G" target="_blank" class="menu-btn">
+                <span>💥 Останній бум (Відео)</span> <i class="fa-brands fa-youtube" style="color: #ff0000;"></i>
+            </a>
+            <a id="btn-clips" href="https://www.youtube.com/watch?v=S_5484gm1BM&list=PLdoT7I-YV5k0gzjDLQBHqnJzX4pMFTnzN" target="_blank" class="menu-btn">
+                <span>🎬 Кліпи (Плейлист)</span> <i class="fa-solid fa-play" style="color: var(--primary);"></i>
+            </a>
 
             <div class="menu-btn" onclick="openSection('socials')"><span>📱 Наші спільноти</span> <i class="fas fa-users"></i></div>
             <div class="menu-btn" onclick="openSection('socials-kohan')"><span>👤 Соцмережі KoHaN</span> <i class="fas fa-chevron-right"></i></div>
@@ -118,10 +123,17 @@
                 const response = await fetch('data.json');
                 const data = await response.json();
                 
+                // Оновлюємо списки
                 renderList('kohan-list', data.kohan);
                 renderList('vyshnevsky-list', data.vyshnevsky);
                 
-                renderVideos('dynamic-videos', data.main_videos);
+                // Оновлюємо посилання на окремі кнопки відео (якщо вони вказані)
+                if (data.video_links) {
+                    if (data.video_links.boom) document.getElementById('btn-boom').href = data.video_links.boom;
+                    if (data.video_links.clips) document.getElementById('btn-clips').href = data.video_links.clips;
+                }
+
+                // Оновлюємо соцмережі
                 renderSocials('socials-label-list', data.socials_label);
                 renderSocials('socials-kohan-list', data.socials_kohan);
                 renderSocials('socials-bohdan-list', data.socials_bohdan);
@@ -129,7 +141,6 @@
             } catch (e) { console.error("Помилка завантаження даних", e); }
         }
 
-        // Автоматичний підбір іконок за посиланням
         function getIcon(url) {
             if(!url) return '<i class="fa-solid fa-link"></i>';
             if(url.includes('tiktok.com')) return '<i class="fa-brands fa-tiktok" style="color:#00f2ea;"></i>';
@@ -147,16 +158,6 @@
                     <img src="${item.image || ''}" class="track-img" onerror="this.style.display='none'">
                     <div style="text-align:left; flex-grow:1;"><b>${item.title}</b></div>
                     <i class="fas fa-play" style="color:var(--secondary); font-size: 18px;"></i>
-                </a>
-            `).join('');
-        }
-
-        function renderVideos(containerId, items) {
-            const container = document.getElementById(containerId);
-            if (!container || !items) return;
-            container.innerHTML = items.map(item => `
-                <a href="${item.link}" target="_blank" class="menu-btn">
-                    <span>${item.title}</span> ${getIcon(item.link)}
                 </a>
             `).join('');
         }
