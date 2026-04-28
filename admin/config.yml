@@ -6,27 +6,48 @@ media_folder: "/"
 public_folder: "/"
 
 collections:
-  - name: "categories"
-    label: "Усі розділи сайту"
-    folder: "content/categories" # Папка, де будуть лежати твої розділи
-    create: true # Дозволяє додавати НОВІ категорії
-    slug: "{{title}}"
-    extension: "json"
-    format: "json"
-    fields:
-      - {label: "Назва розділу (напр. Музика KohaN)", name: "title", widget: "string"}
-      - {label: "Порядковий номер (1, 2, 3...)", name: "order", widget: "number", default: 10}
-      - label: "Тип розділу"
-        name: "type"
-        widget: "select"
-        options: 
-          - {label: "Список з іконками (Соцмережі)", value: "socials"}
-          - {label: "Список з обкладинками (Музика)", value: "music"}
-          - {label: "Окреме відео", value: "video"}
-      - label: "Вміст розділу"
-        name: "items"
-        widget: "list"
+  - name: "database"
+    label: "База даних сайту"
+    files:
+      - label: "Керування контентом"
+        name: "links"
+        file: "data.json"
         fields:
-          - {label: "Назва елемента", name: "item_title", widget: "string"}
-          - {label: "Посилання", name: "item_link", widget: "string"}
-          - {label: "Картинка (для музики)", name: "item_image", widget: "image", required: false}
+          - label: "Всі розділи сайту"
+            name: "sections"
+            widget: "list"
+            summary: "{{title}}"
+            types:
+              - label: "🎵 Секція Музики"
+                name: "music_section"
+                widget: "object"
+                fields:
+                  - {label: "Заголовок розділу", name: "title", widget: "string"}
+                  - label: "Список треків"
+                    name: "items"
+                    widget: "list"
+                    fields:
+                      - {label: "Назва треку", name: "item_title", widget: "string"}
+                      - {label: "Посилання", name: "item_link", widget: "string"}
+                      - {label: "Обкладинка", name: "item_image", widget: "image", required: false}
+
+              - label: "📱 Секція Соцмереж"
+                name: "social_section"
+                widget: "object"
+                fields:
+                  - {label: "Заголовок розділу", name: "title", widget: "string"}
+                  - {label: "Аватарка автора (необов'язково)", name: "avatar", widget: "image", required: false}
+                  - label: "Список посилань"
+                    name: "items"
+                    widget: "list"
+                    fields:
+                      - {label: "Назва", name: "item_title", widget: "string"}
+                      - {label: "Посилання", name: "item_link", widget: "string"}
+
+              - label: "💥 Окрема кнопка (Відео/Плейлист)"
+                name: "video_button"
+                widget: "object"
+                fields:
+                  - {label: "Текст на кнопці", name: "title", widget: "string"}
+                  - {label: "Посилання", name: "item_link", widget: "string"}
+                  - {label: "Тип іконки", name: "icon_type", widget: "select", options: ["youtube", "play", "users"]}
