@@ -11,6 +11,17 @@
   "sections": [
     {
       "type": "music_section",
+      "items": [
+        {
+          "item_image": "/я тобі брешу.png",
+          "item_title": "Я тобі брешу",
+          "item_link": "https://social.tunecore.com/linkShare?linkid=ipIwAantTNnnt3OQMtC-yw"
+        }
+      ],
+      "title": "Музика KoHaN"
+    },
+    {
+      "type": "music_section",
       "title": "Музика Vyshnevsky",
       "items": [
         {
@@ -21,15 +32,16 @@
       ]
     },
     {
-      "type": "music_section",
-      "items": [
-        {
-          "item_image": "/я тобі брешу.png",
-          "item_title": "Я тобі брешу",
-          "item_link": "https://social.tunecore.com/linkShare?linkid=ipIwAantTNnnt3OQMtC-yw"
-        }
-      ],
-      "title": "Музика KoHaN"
+      "type": "video_button",
+      "icon_type": "youtube",
+      "title": "Останній бум",
+      "item_link": "https://youtu.be/cpk2AJbbzBc"
+    },
+    {
+      "type": "video_button",
+      "title": "Кліпи(Плейлист)",
+      "item_link": "https://www.youtube.com/playlist?list=PLdoT7I-YV5k0gzjDLQBHqnJzX4pMFTnzN",
+      "icon_type": "youtube"
     }
   ]
 }
