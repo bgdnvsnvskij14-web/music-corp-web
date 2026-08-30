@@ -13,6 +13,11 @@
       "type": "music_section",
       "items": [
         {
+          "item_image": "накриває-1-.png",
+          "item_title": "Накриває",
+          "item_link": "https://social.tunecore.com/linkShare?linkid=vK1gN6YADAFv15R2J9fDJg"
+        },
+        {
           "item_image": "/я тобі брешу.png",
           "item_title": "Я тобі брешу",
           "item_link": "https://social.tunecore.com/linkShare?linkid=ipIwAantTNnnt3OQMtC-yw"
@@ -106,11 +111,6 @@
           "item_image": "далі буде(обложка).png",
           "item_title": "Далі буде",
           "item_link": "https://social.tunecore.com/linkShare?linkid=7-YQ2pb5FbOGPjWtrhfl9Q"
-        },
-        {
-          "item_image": "накриває-1-.png",
-          "item_title": "Накриває",
-          "item_link": "https://social.tunecore.com/linkShare?linkid=vK1gN6YADAFv15R2J9fDJg"
         }
       ],
       "title": "Музика KoHaN"
