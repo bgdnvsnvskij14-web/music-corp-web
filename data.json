@@ -10,6 +10,12 @@
   "clips_playlist": "https://www.youtube.com/playlist?list=PLdoT7I-YV5k0gzjDLQBHqnJzX4pMFTnzN",
   "sections": [
     {
+      "type": "video_button",
+      "icon_type": "youtube",
+      "title": "Новий кліп на трек KoHaN - Goodbye my love",
+      "item_link": "https://youtu.be/ux7qmovqUCo?si=bwQKq7D6Vpxtsy4D"
+    },
+    {
       "type": "music_section",
       "items": [
         {
@@ -135,12 +141,6 @@
           "item_link": "https://social.tunecore.com/linkShare?linkid=wuq1GOMXaeXyFSReIEAAXQ"
         }
       ]
-    },
-    {
-      "type": "video_button",
-      "icon_type": "youtube",
-      "title": "Двіж в центрі Вінниці",
-      "item_link": "https://www.youtube.com/watch?v=TMYofsU9eBk"
     },
     {
       "type": "video_button",
